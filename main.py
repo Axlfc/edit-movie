@@ -135,10 +135,3 @@ for j in variables_audio:
 
 # TODO Check correct phone proportion transformation
 
-# TODO Create video from bunch of images
-
-
-
-
-
-
