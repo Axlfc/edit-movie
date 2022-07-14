@@ -63,7 +63,7 @@ def poner_audio(videoclip, audioclip):
 	videoclip.write_videofile("new_filename.mp4")
 
 def cambiar_resolucion(clip, wid, hei):
-	reducido = clip.resize(width = wid, height = hei)
+	reducido = clip.resize((wid, hei))
 	reducido.write_videofile("reducido.mp4")
 
 def rotar_video(clip, angle):
