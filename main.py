@@ -135,3 +135,4 @@ for j in variables_audio:
 
 # TODO Check correct phone proportion transformation
 
+# TODO Set output path from outside functions by passing it as argument
