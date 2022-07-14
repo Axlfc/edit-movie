@@ -76,9 +76,15 @@ audio1 = variables_audio[0]
 
 # poner_audio(clip1, audio1)
 
-# TODO Control lenghts of videos and songs
+# TODO Control lenghts of videos and audio sync
 
-# TODO Check phone proportion transformation
+# TODO Transform horizontal video to vertical
+
+# TODO Identify vertical videos
+
+# TODO Transform vertical videos to horizontal
+
+# TODO Check correct phone proportion transformation
 
 # TODO Create video from bunch of images
 
