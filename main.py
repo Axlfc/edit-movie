@@ -1,18 +1,62 @@
 from moviepy.editor import *
+import os
+
+def produce_video(t): 
+	path = os.getcwd()
+
+	clips = []
+
+	filenames = []
+	os.chdir("./images")
+	directory = sorted(os.listdir('.'))
+
+	for filename in directory:
+		if filename.endswith(".png"):
+			filenames.append(filename)
+
+	clips = [ImageClip(m).set_duration(t) for m in filenames]
+
+	os.chdir(path)
+	video = concatenate(clips, method='compose')
+	video.write_videofile('test.mp4', fps=24)
 
 def importar_video(video):
+
 	return VideoFileClip(video)
 
 def importar_audio(audio):
+
 	return AudioFileClip(audio)
 
 def unir(clips):
 	final_clip = concatenate_videoclips(clips)
 	final_clip.write_videofile("video_output.mp4")
 
+def unir_audio(audios):
+		path = os.getcwd()
+		clips = []
+		filenames = []
+		os.chdir(".")
+		directory = sorted(os.listdir('.'))
+
+		for filename in directory:
+			if filename.endswith(".mp3"):
+				filenames.append(filename)
+		print("test!!")
+		clips = [AudioFileClip(m) for m in filenames]
+
+		os.chdir(path)
+
+		final_clip = concatenate_audioclips(clips)
+		final_clip.write_audiofile("audiofiles.mp3")
+
 def extraer_audio(clip):
 	audio = clip.audio
 	audio.write_audiofile("audio_output.mp3")
+
+def mute_clip(video):
+	final_video = video.without_audio()
+	final_video.write_videofile("no_audio_output.mp4", fps=60)
 
 def poner_audio(videoclip, audioclip):
 	new_audioclip = CompositeAudioClip([audioclip])
@@ -37,10 +81,9 @@ def phone_proportions():
 
 videos = ("video1.mp4", "video2.mp4", "video3.mp4")
 
-i=0
 variables=[]
 for vid in videos:
-	i+=1
+	
 	variables.append(importar_video(vid))
 
 i=0
@@ -48,17 +91,17 @@ for j in variables:
   j = importar_video(videos[i])
   i+=1
 
-clip1 = variables[0]
+# clip1 = variables[0]
 # clip_final = unir(variables)
 
+# mute_clip(variables[0])
 # cambiar_resolucion(clip1, 480, 480)
 
 
-audios = ("audio1.wav", "audio2.wav", "audio3.wav")
-i=0
+audios = ("audio1.mp3", "audio2.mp3", "audio3.mp3")
 variables_audio=[]
 for aud in audios:
-	i+=1
+
 	variables_audio.append(importar_audio(aud))
 
 i=0
@@ -66,8 +109,10 @@ for j in variables_audio:
   j = importar_audio(audios[i])
   i+=1
 
-audio1 = variables_audio[0]
-#print(audio1)
+
+# audio1 = variables_audio[0]
+
+# clip_final = unir_audio(variables_audio)
 
 # rotar_video(clip1, 180)
 # cambiar_velocidad(clip1, 2)
@@ -76,7 +121,11 @@ audio1 = variables_audio[0]
 
 # poner_audio(clip1, audio1)
 
+# produce_video(2)
+
+
 # TODO Control lenghts of videos and audio sync
+# audio_duration = audio_clip.duration
 
 # TODO Transform horizontal video to vertical
 
