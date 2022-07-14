@@ -42,7 +42,6 @@ def unir_audio(audios):
 		for filename in directory:
 			if filename.endswith(".mp3"):
 				filenames.append(filename)
-		print("test!!")
 		clips = [AudioFileClip(m) for m in filenames]
 
 		os.chdir(path)
@@ -80,35 +79,33 @@ def phone_proportions():
 	pass	
 
 videos = ("video1.mp4", "video2.mp4", "video3.mp4")
-
 variables=[]
 for vid in videos:
-	
-	variables.append(importar_video(vid))
 
+	variables.append(importar_video(vid))
 i=0
 for j in variables:
   j = importar_video(videos[i])
   i+=1
-
-# clip1 = variables[0]
-# clip_final = unir(variables)
-
-# mute_clip(variables[0])
-# cambiar_resolucion(clip1, 480, 480)
-
 
 audios = ("audio1.mp3", "audio2.mp3", "audio3.mp3")
 variables_audio=[]
 for aud in audios:
 
 	variables_audio.append(importar_audio(aud))
-
 i=0
 for j in variables_audio:
   j = importar_audio(audios[i])
   i+=1
 
+################# TEST LINE
+
+# clip1 = variables[0]
+# clip_final = unir(variables)
+
+# mute_clip(variables[0])
+
+# cambiar_resolucion(clip1, 480, 480)
 
 # audio1 = variables_audio[0]
 
@@ -124,7 +121,10 @@ for j in variables_audio:
 # produce_video(2)
 
 
-# TODO Control lenghts of videos and audio sync
+################# TODO LINE
+
+# Control lenghts of videos and audio sync
+
 # audio_duration = audio_clip.duration
 
 # TODO Transform horizontal video to vertical
