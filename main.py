@@ -116,29 +116,3 @@ if __name__ == '__main__':
 		j = importar_audio(audios[i])
 		i += 1
 
-
-	################# TEST LINE
-
-	# clip1 = variables[0]
-	# print(get_orientation(importar_video("phone.mp4")))
-
-	# phone_proportions(clip1)
-
-	# clip_final = unir(variables)
-
-	# mute_clip(clip1)
-
-	# cambiar_resolucion(clip1, 480, 480)
-
-	# audio1 = variables_audio[0]
-
-	# clip_final = unir_audio(variables_audio)
-
-	# rotar_video(clip1, 180)
-	# cambiar_velocidad(clip1, 2)
-
-	# extraer_audio(clip1)
-
-	# poner_audio(clip1, audio1)
-
-	# produce_video(0.2)
