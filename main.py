@@ -1,11 +1,11 @@
 from moviepy.editor import *
 import os
 
-def write_video(video, name):
-	video.write_videofile(name + '.mp4', fps=24)
+def write_video(videoclip, name):
+	videoclip.write_videofile(name + '.mp4', fps=24)
 
-def write_audio(audio, name):
-	audio.write_audiofile(name + '.mp3')
+def write_audio(audioclip, name):
+	audioclip.write_audiofile(name + '.mp3')
 
 def produce_video(t):
 	path = os.getcwd()
@@ -25,34 +25,34 @@ def produce_video(t):
 	os.chdir(path)
 	write_video(concatenate(clips, method='compose'), "produced")
 
-def importar_video(video):
-	return VideoFileClip(video)
+def importar_video(videoclip):
+	return VideoFileClip(videoclip)
 
-def importar_audio(audio):
-	return AudioFileClip(audio)
+def importar_audio(audioclip):
+	return AudioFileClip(audioclip)
 
-def get_resolution(video):
-	return video.size
+def get_resolution(videoclip):
+	return videoclip.size
 
-def get_height(video):
-	return video.h
+def get_height(videoclip):
+	return videoclip.h
 
-def get_width(video):
-	return video.w
+def get_width(videoclip):
+	return videoclip.w
 
 def get_duration(media):
 	return media.duration
 
-def get_orientation(video):
-	if get_width(video) > get_height(video):
+def get_orientation(videoclip):
+	if get_width(videoclip) > get_height(videclip):
 		return True
 	else:
 		return False
 
-def unir(clips):
-	write_video(concatenate_videoclips(clips), "unir")
+def unir(videoclips):
+	write_video(concatenate_videoclips(videoclips), "unir")
 
-def unir_audio(audios):
+def unir_audio(audioclips):
 		path = os.getcwd()
 		clips = []
 		filenames = []
@@ -66,30 +66,30 @@ def unir_audio(audios):
 
 		os.chdir(path)
 
-		write_audio(concatenate_audioclips(clips), "uniraudio")
+		write_audio(concatenate_audioclips(audioclips), "uniraudio")
 
-def extraer_audio(clip):
-	write_audio(clip.audio, "uniraudio")
+def extraer_audio(videoclip):
+	write_audio(videoclip.audio, "extract")
 
-def mute_clip(video):
-	write_video(video.without_audio(), "muted")
+def mute_clip(videoclip):
+	write_video(videoclip.without_audio(), "muted")
 
 def poner_audio(videoclip, audioclip):
 	new_audioclip = CompositeAudioClip([audioclip])
 	videoclip.audio = new_audioclip
 	write_video(videoclip, "new_sound")
 
-def cambiar_resolucion(clip, wid, hei):
-	write_video(clip.resize((wid, hei)), "resolucion")
+def cambiar_resolucion(videoclip, wid, hei):
+	write_video(videoclip.resize((wid, hei)), "resolucion")
 
-def rotar_video(clip, angle):
-	write_video(clip.rotate(angle), "rotado")
+def rotar_video(videoclip, angle):
+	write_video(videoclip.rotate(angle), "rotado")
 
-def cambiar_velocidad(clip, vel):
-	write_video(clip.fx(vfx.speedx, vel), "rapido")
+def cambiar_velocidad(videoclip, vel):
+	write_video(videoclip.fx(vfx.speedx, vel), "rapido")
 
-def phone_proportions(clip):
-	write_video(clip.resize((1080, 1920)), "phone")
+def phone_proportions(videoclip):
+	write_video(videoclip.resize((1080, 1920)), "phone")
 
 
 ################# TODO LINE
