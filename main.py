@@ -43,6 +43,12 @@ def get_width(video):
 def get_duration(media):
 	return media.duration
 
+def get_orientation(video):
+	if get_width(video) > get_height(video):
+		return True
+	else:
+		return False
+
 def unir(clips):
 	write_video(concatenate_videoclips(clips), "unir")
 
@@ -88,7 +94,6 @@ def phone_proportions(clip):
 
 ################# TODO LINE
 
-# TODO Identify vertical videos
 # TODO Transform vertical videos to horizontal & viceversa
 # TODO Check correct phone proportion transformation
 
@@ -115,6 +120,8 @@ if __name__ == '__main__':
 	################# TEST LINE
 
 	# clip1 = variables[0]
+	# print(get_orientation(importar_video("phone.mp4")))
+
 	# phone_proportions(clip1)
 
 	# clip_final = unir(variables)
