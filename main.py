@@ -114,12 +114,12 @@ if __name__ == '__main__':
 
 	################# TEST LINE
 
-	clip1 = variables[0]
+	# clip1 = variables[0]
 	# phone_proportions(clip1)
 
 	# clip_final = unir(variables)
 
-	mute_clip(clip1)
+	# mute_clip(clip1)
 
 	# cambiar_resolucion(clip1, 480, 480)
 
