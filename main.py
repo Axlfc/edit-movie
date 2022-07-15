@@ -1,6 +1,12 @@
 from moviepy.editor import *
 import os
 
+def write_video(video, name):
+	video.write_videofile(name + '.mp4', fps=24)
+
+def write_audio(audio, name):
+	audio.write_audiofile(name + '.mp3')
+
 def produce_video(t):
 	path = os.getcwd()
 
@@ -17,34 +23,28 @@ def produce_video(t):
 	clips = [ImageClip(m).set_duration(t) for m in filenames]
 
 	os.chdir(path)
-	video = concatenate(clips, method='compose')
-	video.write_videofile('produced.mp4', fps=24)
+	write_video(concatenate(clips, method='compose'), "produced")
 
 def importar_video(video):
-
 	return VideoFileClip(video)
 
 def importar_audio(audio):
-
 	return AudioFileClip(audio)
 
 def get_resolution(video):
 	return video.size
 
 def get_height(video):
-
 	return video.h
 
 def get_width(video):
-
 	return video.w
 
 def get_duration(media):
 	return media.duration
 
 def unir(clips):
-	final_clip = concatenate_videoclips(clips)
-	final_clip.write_videofile("unir.mp4")
+	write_video(concatenate_videoclips(clips), "unir")
 
 def unir_audio(audios):
 		path = os.getcwd()
@@ -60,45 +60,37 @@ def unir_audio(audios):
 
 		os.chdir(path)
 
-		final_clip = concatenate_audioclips(clips)
-		final_clip.write_audiofile("uniraudio.mp3")
+		write_audio(concatenate_audioclips(clips), "uniraudio")
 
 def extraer_audio(clip):
-	audio = clip.audio
-	audio.write_audiofile("extraer_audio.mp3")
+	write_audio(clip.audio, "uniraudio")
 
 def mute_clip(video):
-	final_video = video.without_audio()
-	final_video.write_videofile("muted.mp4", fps=60)
+	write_video(video.without_audio(), "muted")
 
 def poner_audio(videoclip, audioclip):
 	new_audioclip = CompositeAudioClip([audioclip])
 	videoclip.audio = new_audioclip
-	videoclip.write_videofile("new_sound.mp4")
+	write_video(videoclip, "new_sound")
 
 def cambiar_resolucion(clip, wid, hei):
-	reducido = clip.resize((wid, hei))
-	reducido.write_videofile("resolucion.mp4")
+	write_video(clip.resize((wid, hei)), "resolucion")
 
 def rotar_video(clip, angle):
-	video = clip.rotate(angle)
-	video.write_videofile("rotado.mp4")
+	write_video(clip.rotate(angle), "rotado")
 
 def cambiar_velocidad(clip, vel):
-	video = clip.fx(vfx.speedx, vel)
-	video.write_videofile("rapido.mp4")
+	write_video(clip.fx(vfx.speedx, vel), "rapido")
 
 def phone_proportions(clip):
-	phone = clip.resize((1080, 1920))
-	phone.write_videofile("phone.mp4")
+	write_video(clip.resize((1080, 1920)), "phone")
 
 
 ################# TODO LINE
 
 # TODO Identify vertical videos
-# TODO Transform vertical videos to horizontal & vice versa
+# TODO Transform vertical videos to horizontal & viceversa
 # TODO Check correct phone proportion transformation
-# TODO Set output path from outside functions by passing it as argument
 
 if __name__ == '__main__':
 	videos = ("video1.mp4", "video2.mp4", "video3.mp4")
@@ -123,11 +115,11 @@ if __name__ == '__main__':
 	################# TEST LINE
 
 	clip1 = variables[0]
-	phone_proportions(clip1)
+	# phone_proportions(clip1)
 
 	# clip_final = unir(variables)
 
-	# mute_clip(clip1)
+	mute_clip(clip1)
 
 	# cambiar_resolucion(clip1, 480, 480)
 
@@ -142,4 +134,4 @@ if __name__ == '__main__':
 
 	# poner_audio(clip1, audio1)
 
-	# produce_video(2)
+	# produce_video(0.2)
